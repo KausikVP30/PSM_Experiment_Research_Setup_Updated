@@ -1,0 +1,31 @@
+
+{
+  "run_id": "psm_smoke_persistent_final",
+  "timestamp": "2026-04-16_14-06-06",
+  "dataset": "Synthetic Questions",
+  "smoke_size": 20,
+  "mode": "persistent_memory",
+  "model": "llama3 (8B)",
+  "threshold": 0.55,
+  "total_queries": 20,
+  "avg_em": 0.0,
+  "avg_f1": 0.3527689203743631,
+  "avg_confidence": 0.7105210296809673,
+  "memory_path_count": 14,
+  "retrieval_path_count": 6,
+  "memory_path_rate": 0.7,
+  "retrieval_path_rate": 0.3,
+  "memory_path": {
+    "count": 14,
+    "avg_em": 0.0,
+    "avg_f1": 0.35827923407363055,
+    "avg_confidence": 0.8698740346091134
+  },
+  "retrieval_path": {
+    "count": 6,
+    "avg_em": 0.0,
+    "avg_f1": 0.33991152174273936,
+    "avg_confidence": 0.3386973515152931
+  },
+  "final_memory_size": 23
+}

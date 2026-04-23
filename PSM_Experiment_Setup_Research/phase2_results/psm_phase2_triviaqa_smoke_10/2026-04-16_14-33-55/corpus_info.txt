@@ -1,0 +1,16 @@
+Corpus size: 283
+Sample passages:
+[0] Andrew_Lloyd_Webber.txt
+[1] Andrew Lloyd Webber, Baron Lloyd-Webber   (born 22 March 1948) is an English composer and impresario of musical theatre. 
+
+Several of his musicals have run for more than a decade both in the West End and on Broadway. He has composed 13 musicals, a so
+[2] Prime Minister of the United Kingdom
+[3] Prime_Minister_of_the_United_Kingdom.txt
+[4] The Prime Minister of the United Kingdom of Great Britain and Northern Ireland  is the head of Her Majesty's Government in the United Kingdom. The prime minister (informal abbreviation: PM) and Cabinet (consisting of all the most senior ministers, mo
+[5] Arthur James Balfour, 1st Earl of Balfour,  (;  25 July 1848 – 19 March 1930) was a British Conservative politician who was the Prime Minister of the United Kingdom from July 1902 to December 1905, and later Foreign Secretary.
+
+Entering Parliament in
+[6] Kiss_You_All_Over.txt
+[7] "Kiss You All Over" is a 1978 song performed by the group Exile. It was written by Mike Chapman and Nicky Chinn. It was included on the band's album Mixed Emotions, and it featured Jimmy Stokley and guitarist JP Pennington on lead vocals. It was a nu
+[8] Kathleen_Ferrier.txt
+[9] Kathleen Mary Ferrier, CBE (22 April 1912 - 8 October 1953) was an English contralto singer who achieved an international reputation as a stage, concert and recording artist, with a repertoire extending from folksong and popular ballads to the classi

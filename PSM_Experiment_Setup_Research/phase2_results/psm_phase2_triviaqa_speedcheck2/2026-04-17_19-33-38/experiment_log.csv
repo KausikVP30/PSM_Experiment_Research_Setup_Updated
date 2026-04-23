@@ -1,0 +1,2 @@
+timestamp,query,confidence,memory_id,sim_query,sim_answer,sim_docs,source,latency,memory_size,retrieval_count,memory_count
+2026-04-17 19:35:27.575331,Which Lloyd Webber musical premiered in the US on 10th December 1993?,0,,,,,retrieval,54.94947791099548,1,1,0

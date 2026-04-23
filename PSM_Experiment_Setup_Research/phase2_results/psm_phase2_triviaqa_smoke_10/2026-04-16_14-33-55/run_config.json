@@ -1,0 +1,13 @@
+{
+  "run_id": "psm_phase2_triviaqa_smoke_10",
+  "timestamp": "2026-04-16_14-33-55",
+  "dataset": "TriviaQA rc.wikipedia",
+  "num_questions": 10,
+  "corpus_size": 283,
+  "mode": "persistent_memory",
+  "memory_learning": true,
+  "threshold": 0.55,
+  "model": "llama3 (8B)",
+  "embedding_model": "all-MiniLM-L6-v2",
+  "python": "3.12.12 (main, Feb 10 2026, 09:46:30) [GCC 8.5.0 20210514 (Red Hat 8.5.0-28)]"
+}

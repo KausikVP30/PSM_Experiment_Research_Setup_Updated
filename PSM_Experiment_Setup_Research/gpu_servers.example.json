@@ -1,0 +1,20 @@
+{
+  "servers": [
+    {
+      "name": "gpu-a",
+      "host": "10.0.0.11",
+      "user": "your_user",
+      "port": 22,
+      "workdir": "/home/your_user/PSM_Experiment_Setup_Research",
+      "python_command": "python"
+    },
+    {
+      "name": "gpu-b",
+      "host": "10.0.0.12",
+      "user": "your_user",
+      "port": 22,
+      "workdir": "/home/your_user/PSM_Experiment_Setup_Research",
+      "python_command": "python"
+    }
+  ]
+}

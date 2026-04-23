@@ -1,0 +1,31 @@
+{
+  "run_id": "psm_phase2_triviaqa_smoke_10",
+  "timestamp": "2026-04-16_14-33-55",
+  "phase": "phase2",
+  "dataset": "TriviaQA rc.wikipedia",
+  "num_questions": 10,
+  "corpus_size": 283,
+  "mode": "persistent_memory",
+  "model": "llama3 (8B)",
+  "threshold": 0.55,
+  "avg_em": 0.0,
+  "avg_f1": 0.04315449747798913,
+  "avg_confidence": 0.23642888516187668,
+  "memory_path_count": 0,
+  "retrieval_path_count": 10,
+  "memory_path_rate": 0.0,
+  "retrieval_path_rate": 1.0,
+  "memory_path": {
+    "count": 0,
+    "avg_em": 0.0,
+    "avg_f1": 0.0,
+    "avg_confidence": 0.0
+  },
+  "retrieval_path": {
+    "count": 10,
+    "avg_em": 0.0,
+    "avg_f1": 0.04315449747798913,
+    "avg_confidence": 0.23642888516187668
+  },
+  "final_memory_size": 33
+}
