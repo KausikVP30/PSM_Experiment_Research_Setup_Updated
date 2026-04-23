@@ -89,5 +89,5 @@ class KaggleLLM:
                 return_full_text=False,
             )
             return (outputs[0]["generated_text"] or "").strip()
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:  # transformers/CUDA errors have many forms; surface them as LLM errors
             return f"[LLM_ERROR] {exc}"
