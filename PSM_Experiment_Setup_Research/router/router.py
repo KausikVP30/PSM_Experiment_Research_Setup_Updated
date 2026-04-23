@@ -1,7 +1,7 @@
 from memory.memory_retriever import MemoryRetriever
 from retrieval.hybrid_retriever import HybridRetriever
 from prompt_template import build_prompt       # was missing
-from llm.llm_interface import LocalLLM            # was missing
+from llm.llm_interface import get_llm              # selects Ollama or Kaggle backend
 import time
 from logs.logger import Logger
 from embedding.Embedding import EmbeddingModel
@@ -29,7 +29,7 @@ class Router:
         # so new memories immediately affect confidence.
         self.memory_store = self.memory_retriever.memory_store
         self.memory_index = self.memory_retriever.memory_index
-        self.llm = LocalLLM()                          # was missing
+        self.llm = get_llm()                          # selects backend via PSM_LLM_BACKEND env var
         self.logger = Logger(log_file=log_file)
         self.retrieval_count = 0                     # was missing
         self.memory_count = 0                         # was missing
