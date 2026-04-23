@@ -259,6 +259,42 @@ class PSMExperimentRunner:
         summary_path = run_dir / "summary_metrics.json"
         summary_path.write_text(json.dumps(summary, indent=2), encoding="utf-8")
 
+        # Flat CSV version — one row, human-readable, easy to open in Excel / GitHub
+        flat = {
+            "run_id": summary["run_id"],
+            "timestamp": summary["timestamp"],
+            "dataset": summary["dataset"],
+            "split": summary["split"],
+            "num_questions": summary["num_questions"],
+            "corpus_size": summary["corpus_size"],
+            "model": summary["model"],
+            "embedding_model": summary["embedding_model"],
+            "threshold": summary["threshold"],
+            "avg_em": summary["avg_em"],
+            "avg_f1": summary["avg_f1"],
+            "avg_rouge_l": summary["avg_rouge_l"],
+            "avg_bleu": summary["avg_bleu"],
+            "avg_confidence": summary["avg_confidence"],
+            "avg_latency_s": summary["avg_latency_s"],
+            "hallucination_rate": summary["hallucination_rate"],
+            "memory_path_count": summary["memory_path_count"],
+            "memory_path_rate": summary["memory_path_rate"],
+            "retrieval_path_count": summary["retrieval_path_count"],
+            "retrieval_path_rate": summary["retrieval_path_rate"],
+            "memory_path_avg_em": summary["memory_path"]["avg_em"],
+            "memory_path_avg_f1": summary["memory_path"]["avg_f1"],
+            "memory_path_avg_confidence": summary["memory_path"]["avg_confidence"],
+            "retrieval_path_avg_em": summary["retrieval_path"]["avg_em"],
+            "retrieval_path_avg_f1": summary["retrieval_path"]["avg_f1"],
+            "retrieval_path_avg_confidence": summary["retrieval_path"]["avg_confidence"],
+            "final_memory_size": summary["final_memory_size"],
+        }
+        flat_csv_path = run_dir / "summary_metrics.csv"
+        with flat_csv_path.open("w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=list(flat.keys()))
+            writer.writeheader()
+            writer.writerow(flat)
+
         config = {
             "run_id": run_id,
             "timestamp": summary["timestamp"],
