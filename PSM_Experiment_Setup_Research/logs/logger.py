@@ -6,6 +6,11 @@ class Logger:
     def __init__(self, log_file='logs/experiment_log_v2.csv'):
         self.log_file = log_file
 
+        # Ensure parent directory exists (handles changed working directories)
+        log_dir = os.path.dirname(self.log_file)
+        if log_dir:
+            os.makedirs(log_dir, exist_ok=True)
+
         # Create file with header if not exists
         if not os.path.exists(self.log_file):
             with open(self.log_file, 'w', newline='') as f:
