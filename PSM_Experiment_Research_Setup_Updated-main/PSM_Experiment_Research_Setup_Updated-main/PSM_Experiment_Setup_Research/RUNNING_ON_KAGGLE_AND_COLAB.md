@@ -11,6 +11,7 @@ Pick the platform that suits you best, then follow the steps for that platform.
 1. [Overview — what this experiment does](#overview)
 2. [Platform comparison](#platform-comparison)
 3. [Running on Kaggle](#running-on-kaggle)
+   - [Fresh-start checklist (recommended)](#kaggle-fresh-start)
    - [Step 1 — Fork / open the notebook](#kaggle-step-1)
    - [Step 2 — Attach the PSM source code](#kaggle-step-2)
    - [Step 3 — Add a free LLM from Kaggle Models](#kaggle-step-3)
@@ -67,6 +68,30 @@ Metrics collected per question: **Exact Match (EM)**, **Token F1**, **ROUGE-L**,
 ---
 
 ## Running on Kaggle <a name="running-on-kaggle"></a>
+
+### Fresh-start checklist (recommended) <a name="kaggle-fresh-start"></a>
+
+Use this checklist when starting a brand-new Kaggle notebook to avoid stale paths and
+outdated code snapshots.
+
+1. Start from a clean notebook session:
+   - Kernel/Runtime restart.
+   - No old output files mounted from previous experiments.
+2. Attach the **latest** PSM dataset version:
+   - If you use a Kaggle Dataset copy of this repo, re-upload/sync after each GitHub push.
+   - Confirm the version timestamp matches your latest repo update.
+3. Import the notebook from GitHub again (or re-upload the latest `.ipynb`) so the cells
+   reflect current code assumptions.
+4. Add exactly one model in Kaggle Models and copy its exact mounted path using the info icon.
+5. Run cells strictly in order from top to bottom using **Run All**.
+6. If any setup value is changed (model path, output path, dataset attachment), restart and
+   re-run all cells from the beginning.
+
+Quick verification before heavy run:
+
+- Config cell prints backend/model path successfully.
+- Import cell prints detected `PSM root` correctly.
+- Smoke test completes first before full experiment starts.
 
 ### Step 1 — Fork / open the notebook <a name="kaggle-step-1"></a>
 
@@ -168,6 +193,16 @@ Everything else can be left at the defaults for a first run.
 
 Total runtime: **~15–25 min** with GPU (Gemma 2B IT).
 
+For the safest first run in a fresh notebook:
+
+1. Run install cells.
+2. Run config cell and verify model path check passes.
+3. Run import cell and verify `PSM root` is found.
+4. Run smoke test cell and ensure it completes with no exceptions.
+5. Only then run full TriviaQA experiment cells.
+
+If the smoke cell fails, stop and fix that error first. Do not continue to full experiment.
+
 ---
 
 ### Step 6 — Download results <a name="kaggle-step-6"></a>
@@ -212,6 +247,7 @@ After adding a model in the Models tab these are the paths Kaggle assigns.
 |---------|-----|
 | `FileNotFoundError: Model path not found` | The model is not attached or the path is wrong. Click ⓘ next to the model in the sidebar to copy the exact path. |
 | `RuntimeError: PSM source tree not found` | The PSM dataset is not attached. Go to Add-ons → Datasets and attach the repo dataset. |
+| `FileNotFoundError: logs/experiment_log_v2.csv` | You are likely running an older code snapshot in Kaggle. Re-attach/re-upload the newest dataset version from GitHub and restart Run All from a clean session. |
 | `CUDA out of memory` | Use a smaller model (Gemma 2B IT or Phi-2) or reduce `PSM_NUM_PREDICT` to `32`. |
 | `ModuleNotFoundError: faiss` | Re-run the install cell (Cell 2). Kaggle caches installed packages only within the same session. |
 | Notebook session timeout | Kaggle sessions last up to ~9 hours. For longer runs, increase profile sizes gradually and save intermediate CSVs. |
