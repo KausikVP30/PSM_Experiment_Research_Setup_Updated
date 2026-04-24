@@ -41,6 +41,7 @@ class TriviaQAEvaluator:
         self.predictions_path = self.output_dir / "predictions.jsonl"
         self.metrics_path = self.output_dir / "summary_metrics.json"
         self.run_config_path = self.output_dir / "run_config.json"
+        self.log_file_path = self.output_dir / "experiment_log_v2.csv"
         
         self.router = None
         self.dataset = None
@@ -133,7 +134,11 @@ class TriviaQAEvaluator:
         print(f"[INFO] Using {len(all_docs)} evidence documents as retrieval corpus.")
         
         # Initialize router with persistent memory
-        self.router = Router(documents=all_docs, threshold=0.55)
+        self.router = Router(
+            documents=all_docs,
+            threshold=0.55,
+            log_file=str(self.log_file_path),
+        )
         self.router.hybrid_retriever.build_index(all_docs)
         
         print("[INFO] ✓ Router initialized with persistent memory enabled.")

@@ -1,6 +1,7 @@
 import requests
 import os
 
+
 class LocalLLM:
     def __init__(self, model_name="llama3"):
         self.model_name = os.getenv("PSM_MODEL_NAME", model_name)
@@ -33,3 +34,21 @@ class LocalLLM:
             return result.get("response", "")
         except Exception as exc:
             return f"[LLM_ERROR] {exc}"
+
+
+def get_llm():
+    """Return the appropriate LLM backend based on the ``PSM_LLM_BACKEND`` env var.
+
+    Backends
+    --------
+    ``ollama`` (default)
+        :class:`LocalLLM` — calls a local Ollama HTTP server (default port 11434).
+    ``kaggle``
+        :class:`~llm.kaggle_llm.KaggleLLM` — loads a HuggingFace model from a
+        local directory (set ``PSM_KAGGLE_MODEL_PATH`` to the model folder).
+    """
+    backend = os.getenv("PSM_LLM_BACKEND", "ollama").lower()
+    if backend == "kaggle":
+        from llm.kaggle_llm import KaggleLLM
+        return KaggleLLM()
+    return LocalLLM()

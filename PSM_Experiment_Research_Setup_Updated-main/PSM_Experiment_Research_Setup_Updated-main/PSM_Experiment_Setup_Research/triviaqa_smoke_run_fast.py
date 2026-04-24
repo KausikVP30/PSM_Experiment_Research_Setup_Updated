@@ -159,6 +159,7 @@ class PSMSmokeRunFast:
         self.predictions_path = self.output_dir / "predictions.jsonl"
         self.metrics_path = self.output_dir / "summary_metrics.json"
         self.run_config_path = self.output_dir / "run_config.json"
+        self.log_file_path = self.output_dir / "experiment_log_v2.csv"
         
         self.router = None
         self.test_data = SYNTHETIC_QUESTIONS[:self.smoke_size]
@@ -236,7 +237,11 @@ class PSMSmokeRunFast:
             "Trees are hierarchical data structures with nodes and edges.",
         ]
         
-        self.router = Router(documents=corpus, threshold=0.55)
+        self.router = Router(
+            documents=corpus,
+            threshold=0.55,
+            log_file=str(self.log_file_path),
+        )
         self.router.hybrid_retriever.build_index(corpus)
         print("[INFO] ✓ Router initialized.")
     
