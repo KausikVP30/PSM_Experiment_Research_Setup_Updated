@@ -25,7 +25,7 @@ from __future__ import annotations
 import os
 
 import torch
-from transformers import pipeline
+from transformers import AutoModelForCausalLM, AutoTokenizer, GenerationConfig
 
 
 class KaggleLLM:
@@ -46,7 +46,31 @@ class KaggleLLM:
         )
         self.max_new_tokens: int = int(os.getenv("PSM_NUM_PREDICT", "64"))
         self.temperature: float = float(os.getenv("PSM_TEMPERATURE", "0.1"))
-        self._pipe = None
+        self._model = None
+        self._tokenizer = None
+        self._generation_config = None
+
+    def _resolve_pad_token_id(self) -> int:
+        """Return a safe pad_token_id across model/tokenizer variants."""
+        tokenizer = self._tokenizer
+        model = self._model
+
+        pad_id = getattr(tokenizer, "pad_token_id", None)
+        if pad_id is not None:
+            return int(pad_id)
+
+        eos_id = getattr(tokenizer, "eos_token_id", None)
+        if eos_id is None:
+            eos_id = getattr(getattr(model, "config", object()), "eos_token_id", None)
+
+        if eos_id is not None:
+            # Align tokenizer pad token when absent (common for decoder-only models).
+            if getattr(tokenizer, "pad_token", None) is None and getattr(tokenizer, "eos_token", None) is not None:
+                tokenizer.pad_token = tokenizer.eos_token
+            return int(eos_id)
+
+        # Last-resort fallback; avoids runtime attribute errors in generation helpers.
+        return 0
 
     # ------------------------------------------------------------------
     # Internal helpers
@@ -54,7 +78,7 @@ class KaggleLLM:
 
     def _load(self) -> None:
         """Lazily load the transformers pipeline on first use."""
-        if self._pipe is not None:
+        if self._model is not None and self._tokenizer is not None:
             return
 
         use_gpu = torch.cuda.is_available()
@@ -63,12 +87,38 @@ class KaggleLLM:
         print(f"[KaggleLLM] Loading model from: {self.model_path}")
         print(f"[KaggleLLM] Device: {'GPU (float16)' if use_gpu else 'CPU (float32)'}")
 
-        self._pipe = pipeline(
-            "text-generation",
-            model=self.model_path,
-            torch_dtype=dtype,
-            device_map="auto" if use_gpu else None,
+        tokenizer = AutoTokenizer.from_pretrained(
+            self.model_path,
+            trust_remote_code=True,
         )
+        model = AutoModelForCausalLM.from_pretrained(
+            self.model_path,
+            dtype=dtype,
+            device_map="auto" if use_gpu else None,
+            trust_remote_code=True,
+        )
+
+        # Decoder-only models may not define pad token ids. Ensure both tokenizer
+        # and model config have one to avoid generation-time config attribute errors.
+        if tokenizer.pad_token_id is None and tokenizer.eos_token_id is not None:
+            tokenizer.pad_token = tokenizer.eos_token
+        if getattr(model.config, "pad_token_id", None) is None:
+            model.config.pad_token_id = tokenizer.pad_token_id or tokenizer.eos_token_id or 0
+
+        # Some remote-code model configs (including certain Phi variants) can expose
+        # generation config objects that do not carry pad_token_id. Build and store
+        # an explicit GenerationConfig so model.generate never depends on missing attrs.
+        gen_cfg = GenerationConfig.from_model_config(model.config)
+        if getattr(gen_cfg, "eos_token_id", None) is None:
+            gen_cfg.eos_token_id = tokenizer.eos_token_id or getattr(model.config, "eos_token_id", None)
+        if getattr(gen_cfg, "pad_token_id", None) is None:
+            gen_cfg.pad_token_id = tokenizer.pad_token_id or gen_cfg.eos_token_id or 0
+
+        self._generation_config = gen_cfg
+        model.generation_config = gen_cfg
+
+        self._model = model
+        self._tokenizer = tokenizer
 
         print("[KaggleLLM] Model loaded successfully.")
 
@@ -80,14 +130,24 @@ class KaggleLLM:
         """Generate a response for *prompt* and return it as a plain string."""
         try:
             self._load()
-            outputs = self._pipe(
-                prompt,
-                max_new_tokens=self.max_new_tokens,
-                temperature=self.temperature,
-                do_sample=self.temperature > 0,
-                pad_token_id=self._pipe.tokenizer.eos_token_id,
-                return_full_text=False,
-            )
-            return (outputs[0]["generated_text"] or "").strip()
+            inputs = self._tokenizer(prompt, return_tensors="pt")
+            model_device = next(self._model.parameters()).device
+            inputs = {k: v.to(model_device) for k, v in inputs.items()}
+
+            with torch.inference_mode():
+                output_ids = self._model.generate(
+                    **inputs,
+                    max_new_tokens=self.max_new_tokens,
+                    temperature=self.temperature,
+                    do_sample=self.temperature > 0,
+                    pad_token_id=self._resolve_pad_token_id(),
+                    eos_token_id=getattr(self._generation_config, "eos_token_id", None),
+                    generation_config=self._generation_config,
+                )
+
+            prompt_len = inputs["input_ids"].shape[-1]
+            generated_only = output_ids[0][prompt_len:]
+            text = self._tokenizer.decode(generated_only, skip_special_tokens=True)
+            return (text or "").strip()
         except Exception as exc:  # transformers/CUDA errors have many forms; surface them as LLM errors
             return f"[LLM_ERROR] {exc}"
