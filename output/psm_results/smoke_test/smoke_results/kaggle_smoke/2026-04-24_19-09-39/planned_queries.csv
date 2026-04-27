@@ -1,0 +1,11 @@
+query_id,question,correct_answer
+synthetic_000,What is a linked list?,A linear data structure where elements are stored in nodes with pointers
+synthetic_001,What is binary search tree?,"A tree data structure that allows fast lookup, insertion, and deletion"
+synthetic_002,What principle does a stack follow?,Last In First Out (LIFO)
+synthetic_003,What principle does a queue follow?,First In First Out (FIFO)
+synthetic_004,What is a hash table?,A data structure that uses a hash function to map keys to values for fast retrieval
+synthetic_005,What are graph traversal algorithms?,Algorithms like BFS and DFS for visiting all nodes in a graph
+synthetic_006,What is dynamic programming?,An approach that breaks problems into overlapping subproblems
+synthetic_007,What is bubble sort?,A sorting algorithm that repeatedly swaps adjacent elements if they are in wrong order
+synthetic_008,Explain linked lists,Linear structures with nodes containing data and pointers
+synthetic_009,What are doubly linked lists?,Lists with pointers to both next and previous nodes
