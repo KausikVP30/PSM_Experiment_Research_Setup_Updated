@@ -266,6 +266,8 @@ class PSMSmokeRunFast:
             try:
                 # Process through PSM router
                 generated_answer, confidence = self.router.process_query(question)
+                if isinstance(generated_answer, str) and generated_answer.lstrip().startswith("[LLM_ERROR]"):
+                    raise RuntimeError(f"LLM backend error: {generated_answer}")
                 
                 # Get source
                 last_log = self.router.logger.get_metrics_for_query(question)

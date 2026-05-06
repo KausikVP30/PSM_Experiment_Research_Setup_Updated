@@ -1,0 +1,23 @@
+{
+    "id":  "kausikvaibhavpatra/psm-final",
+    "title":  "PSM_Final",
+    "code_file":  "psm-final.ipynb",
+    "language":  "python",
+    "kernel_type":  "notebook",
+    "is_private":  "true",
+    "enable_gpu":  "true",
+    "enable_tpu":  "false",
+    "enable_internet":  "true",
+    "dataset_sources":  [
+
+                        ],
+    "competition_sources":  [
+
+                            ],
+    "kernel_sources":  [
+
+                       ],
+    "model_sources":  [
+
+                      ]
+}

@@ -1,0 +1,14 @@
+{
+  "run_id": "smoke_20260424_190943",
+  "timestamp": "2026-04-24_19-11-22",
+  "dataset": "TriviaQA rc.wikipedia",
+  "split": "validation",
+  "num_questions": 5,
+  "corpus_pool_size": 140,
+  "max_chunks": 500,
+  "threshold": 0.55,
+  "memory_mode": "isolated",
+  "model": "llama3 (8B)",
+  "embedding_model": "all-MiniLM-L6-v2",
+  "output_dir": "/kaggle/working/psm_results/experiment_runs/smoke_20260424_190943"
+}

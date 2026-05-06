@@ -138,6 +138,11 @@ class PSMExperimentRunner:
         for q in tqdm(queries, desc=f"{profile.name}: evaluating"):
             t0 = time.time()
             answer, confidence = router.process_query(q["question"])
+            if isinstance(answer, str) and answer.lstrip().startswith("[LLM_ERROR]"):
+                # Fail fast so broken model/runtime states do not look like successful runs.
+                raise RuntimeError(
+                    f"LLM backend error while answering query_id={q['query_id']}: {answer}"
+                )
             latency_s = time.time() - t0
             latencies.append(latency_s)
 

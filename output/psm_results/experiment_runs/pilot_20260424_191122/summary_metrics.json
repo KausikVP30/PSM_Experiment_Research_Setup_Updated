@@ -1,0 +1,42 @@
+{
+  "run_id": "pilot_20260424_191122",
+  "timestamp": "2026-04-24_19-11-53",
+  "dataset": "TriviaQA rc.wikipedia",
+  "split": "validation",
+  "num_questions": 8,
+  "corpus_size": 900,
+  "documents_before_chunking": 260,
+  "mode": "persistent_memory",
+  "memory_mode": "isolated",
+  "model": "llama3 (8B)",
+  "embedding_model": "all-MiniLM-L6-v2",
+  "threshold": 0.55,
+  "avg_em": 0.0,
+  "avg_f1": 0.012529254125892782,
+  "avg_rouge_l": 0.015998955397319884,
+  "avg_bleu": 0.0010859743011952215,
+  "avg_confidence": 0.1594574353657663,
+  "avg_latency_s": 0.18250209093093872,
+  "memory_path_count": 0,
+  "retrieval_path_count": 8,
+  "memory_path_rate": 0.0,
+  "retrieval_path_rate": 1.0,
+  "retrieval_call_rate": 1.0,
+  "hallucination_rate": 1.0,
+  "memory_path": {
+    "count": 0,
+    "avg_em": 0.0,
+    "avg_f1": 0.0,
+    "avg_confidence": 0.0
+  },
+  "retrieval_path": {
+    "count": 8,
+    "avg_em": 0.0,
+    "avg_f1": 0.012529254125892782,
+    "avg_confidence": 0.1594574353657663
+  },
+  "final_memory_size": 8,
+  "memory_file": "/kaggle/working/psm_results/experiment_runs/pilot_20260424_191122/memory_store.json",
+  "index_file": "/kaggle/working/psm_results/experiment_runs/pilot_20260424_191122/memory_index.faiss",
+  "log_file": "/kaggle/working/psm_results/experiment_runs/pilot_20260424_191122/experiment_log.csv"
+}

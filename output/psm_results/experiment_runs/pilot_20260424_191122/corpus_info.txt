@@ -1,0 +1,12 @@
+documents_before_chunking=260
+chunk_count=900
+[0] Andrew_Lloyd_Webber.txt
+[1] Andrew Lloyd Webber, Baron Lloyd-Webber (born 22 March 1948) is an English composer and impresario of musical theatre. Several of his musicals have run for more than a decade both in the West End and on Broadway. He has composed 13 musicals
+[2] Love Him" from Jesus Christ Superstar, "Don't Cry for Me, Argentina" and "You Must Love Me" from Evita, "Any Dream Will Do" from Joseph and the Amazing Technicolor Dreamcoat and "Memory" from Cats. He has received a number of awards, includ
+[3] the 2008 Classic Brit Award for Outstanding Contribution to Music. He has a star on the Hollywood Walk of Fame, is an inductee into the Songwriter's Hall of Fame, and is a fellow of the British Academy of Songwriters, Composers and Authors.
+[4] Arts Educational Schools London, a performing arts school located in Chiswick, West London. He is involved in a number of charitable activities, including the Elton John AIDS Foundation, Nordoff Robbins, Prostate Cancer UK and War Child. In
+[5] Julian Lloyd Webber, is a renowned solo cellist. Lloyd Webber started writing his own music at a young age, a suite of six pieces at the age of nine. He also put on "productions" with Julian and his Aunt Viola in his toy theatre (which he b
+[6] He also had originally set music to Old Possum's Book of Practical Cats at the age of 15. In 1965, Lloyd Webber was a Queen's Scholar at Westminster School and studied history for a term at Magdalen College, Oxford, although he abandoned th
+[7] Although composed in 1965, it was not publicly performed until 2005, when a production was staged at Lloyd Webber's Sydmonton Festival. In 2008, amateur rights were released by the National Operatic and Dramatic Association (NODA) in associ
+[8] score reflects some of Lloyd Webber's early influences, particularly Richard Rodgers, Frederick Loewe, and Lionel Bart. In this respect, it is markedly different from the composer's later work, which tends to be either predominantly or whol
+[9] pastiche a number of musical styles such as Elvis-style rock'n'roll, Calypso and country music. Joseph began life as a short cantata that gained some recognition on its second staging with a favourable review in The Times. For its subsequen

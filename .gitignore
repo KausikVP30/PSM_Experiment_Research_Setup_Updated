@@ -1,0 +1,20 @@
+# Virtual environments
+.venv/
+
+# IDE
+.vscode/
+
+# Binary outputs and temp files
+*.bin
+*.zip
+*.faiss
+state.db
+
+# Kaggle run logs (regenerated each run)
+run_stdout.txt
+run_stderr.txt
+push_log.txt
+status_log.txt
+
+# Downloaded output (regenerated each run)
+kaggle_run_output_latest/

@@ -9,6 +9,8 @@ persistent memory layer, evaluated on TriviaQA.
   [`PSM_Experiment_Setup_Research/RUNNING_ON_KAGGLE_AND_COLAB.md`](PSM_Experiment_Setup_Research/RUNNING_ON_KAGGLE_AND_COLAB.md)
 - 📒 **Ready-made notebook** →
   [`PSM_Experiment_Setup_Research/PSM_Kaggle_Experiment.ipynb`](PSM_Experiment_Setup_Research/PSM_Kaggle_Experiment.ipynb)
+- 🗺️ **Repo knowledge graph** →
+  [`REPO_KNOWLEDGE_GRAPH.md`](REPO_KNOWLEDGE_GRAPH.md)
 - 🗂️ **Source code** → [`PSM_Experiment_Setup_Research/`](PSM_Experiment_Setup_Research/)
 
 ## What this repo contains

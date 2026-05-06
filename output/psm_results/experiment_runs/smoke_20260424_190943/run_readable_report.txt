@@ -1,0 +1,74 @@
+PSM Run Readable Report
+================================================================================
+Run ID: smoke_20260424_190943
+Timestamp: 2026-04-24_19-11-22
+Dataset: TriviaQA rc.wikipedia | Split: validation
+Model: llama3 (8B) | Embedding: all-MiniLM-L6-v2
+Threshold: 0.55 | Memory Mode: isolated
+Questions: 5 | Corpus Chunks: 500
+
+Main Metrics
+--------------------------------------------------------------------------------
+EM: 0.0000
+F1: 0.0082
+ROUGE-L: 0.0075
+BLEU: 0.0009
+Hallucination Rate (answer-not-contained proxy): 100.0%
+
+Routing Behavior
+--------------------------------------------------------------------------------
+Memory path count: 0 (0.0%)
+Retrieval path count: 5 (100.0%)
+Avg confidence: 0.1438
+Avg latency (s): 0.162
+Final memory size: 5
+
+Interpretation
+--------------------------------------------------------------------------------
+- Memory path triggered rarely; corpus diversity or threshold may be limiting early memory reuse.
+- Answer quality is currently low; retrieval context quality and prompting need improvement.
+
+Raw summary JSON
+--------------------------------------------------------------------------------
+{
+  "run_id": "smoke_20260424_190943",
+  "timestamp": "2026-04-24_19-11-22",
+  "dataset": "TriviaQA rc.wikipedia",
+  "split": "validation",
+  "num_questions": 5,
+  "corpus_size": 500,
+  "documents_before_chunking": 140,
+  "mode": "persistent_memory",
+  "memory_mode": "isolated",
+  "model": "llama3 (8B)",
+  "embedding_model": "all-MiniLM-L6-v2",
+  "threshold": 0.55,
+  "avg_em": 0.0,
+  "avg_f1": 0.00816326530612245,
+  "avg_rouge_l": 0.007476635514018691,
+  "avg_bleu": 0.0009047673741014326,
+  "avg_confidence": 0.14380439817905427,
+  "avg_latency_s": 0.16221747398376465,
+  "memory_path_count": 0,
+  "retrieval_path_count": 5,
+  "memory_path_rate": 0.0,
+  "retrieval_path_rate": 1.0,
+  "retrieval_call_rate": 1.0,
+  "hallucination_rate": 1.0,
+  "memory_path": {
+    "count": 0,
+    "avg_em": 0.0,
+    "avg_f1": 0.0,
+    "avg_confidence": 0.0
+  },
+  "retrieval_path": {
+    "count": 5,
+    "avg_em": 0.0,
+    "avg_f1": 0.00816326530612245,
+    "avg_confidence": 0.14380439817905427
+  },
+  "final_memory_size": 5,
+  "memory_file": "/kaggle/working/psm_results/experiment_runs/smoke_20260424_190943/memory_store.json",
+  "index_file": "/kaggle/working/psm_results/experiment_runs/smoke_20260424_190943/memory_index.faiss",
+  "log_file": "/kaggle/working/psm_results/experiment_runs/smoke_20260424_190943/experiment_log.csv"
+}

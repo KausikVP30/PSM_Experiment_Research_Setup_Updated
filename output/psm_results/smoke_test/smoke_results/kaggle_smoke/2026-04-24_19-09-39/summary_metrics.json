@@ -1,0 +1,30 @@
+{
+  "run_id": "kaggle_smoke",
+  "timestamp": "2026-04-24_19-09-39",
+  "dataset": "Synthetic Questions",
+  "smoke_size": 10,
+  "mode": "persistent_memory",
+  "model": "llama3 (8B)",
+  "threshold": 0.55,
+  "total_queries": 10,
+  "avg_em": 0.0,
+  "avg_f1": 0.04576899086563278,
+  "avg_confidence": 0.4353336840867996,
+  "memory_path_count": 2,
+  "retrieval_path_count": 8,
+  "memory_path_rate": 0.2,
+  "retrieval_path_rate": 0.8,
+  "memory_path": {
+    "count": 2,
+    "avg_em": 0.0,
+    "avg_f1": 0.048263629574309186,
+    "avg_confidence": 0.8872206807136536
+  },
+  "retrieval_path": {
+    "count": 8,
+    "avg_em": 0.0,
+    "avg_f1": 0.045145331188463686,
+    "avg_confidence": 0.32236193493008614
+  },
+  "final_memory_size": 8
+}

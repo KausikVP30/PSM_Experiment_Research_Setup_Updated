@@ -1,0 +1,23 @@
+PSM Experiment Master Report
+================================================================================
+Total runs: 2
+
+Run 1: pilot_20260424_191122 (2026-04-24_19-11-53)
+  Dataset: TriviaQA rc.wikipedia | Questions: 8 | Corpus: 900
+  EM/F1: 0.0000 / 0.0125
+  ROUGE-L/BLEU: 0.0160 / 0.0011
+  Memory/Retrieval: 0.0% / 100.0%
+  Avg latency: 0.183s
+
+Run 2: smoke_20260424_190943 (2026-04-24_19-11-22)
+  Dataset: TriviaQA rc.wikipedia | Questions: 5 | Corpus: 500
+  EM/F1: 0.0000 / 0.0082
+  ROUGE-L/BLEU: 0.0075 / 0.0009
+  Memory/Retrieval: 0.0% / 100.0%
+  Avg latency: 0.162s
+
+Best run by F1
+--------------------------------------------------------------------------------
+Run ID: pilot_20260424_191122
+F1: 0.0125
+Memory rate: 0.0%

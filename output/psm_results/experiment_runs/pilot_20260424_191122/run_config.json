@@ -1,0 +1,14 @@
+{
+  "run_id": "pilot_20260424_191122",
+  "timestamp": "2026-04-24_19-11-53",
+  "dataset": "TriviaQA rc.wikipedia",
+  "split": "validation",
+  "num_questions": 8,
+  "corpus_pool_size": 260,
+  "max_chunks": 900,
+  "threshold": 0.55,
+  "memory_mode": "isolated",
+  "model": "llama3 (8B)",
+  "embedding_model": "all-MiniLM-L6-v2",
+  "output_dir": "/kaggle/working/psm_results/experiment_runs/pilot_20260424_191122"
+}

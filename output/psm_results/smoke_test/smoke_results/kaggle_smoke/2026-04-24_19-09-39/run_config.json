@@ -1,0 +1,11 @@
+{
+  "run_id": "kaggle_smoke",
+  "timestamp": "2026-04-24_19-09-39",
+  "dataset": "Synthetic (fast smoke test)",
+  "smoke_size": 10,
+  "mode": "persistent_memory",
+  "memory_learning": true,
+  "threshold": 0.55,
+  "model": "llama3 (Ollama local, 8B)",
+  "embedding_model": "all-MiniLM-L6-v2"
+}
